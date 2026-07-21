@@ -8,7 +8,6 @@ interface HeroBadgeProps {
   text: string;
   icon?: LucideIcon;
   variant?: "dashed" | "pill-dark" | "pill-light";
-  /** hanya berlaku untuk variant="pill-dark", nambahin segitiga penunjuk */
   pointer?: boolean;
   className?: string;
   delay?: number;
@@ -22,7 +21,6 @@ export default function HeroBadge({
   className,
   delay = 0,
 }: HeroBadgeProps) {
-  // gaya "annotation" ala selection box Figma — cocok sama identitasmu sebagai UI/UX designer
   if (variant === "dashed") {
     return (
       <motion.div

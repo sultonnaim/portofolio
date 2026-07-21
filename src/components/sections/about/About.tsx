@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Download } from "lucide-react";
 import { stats } from "@/data/stats";
 import { skillTags, type SkillTag } from "@/data/skillTags";
+import { socials } from "@/data/socials";
 
 const NAME = "M.Sultonun Naim";
 
@@ -32,20 +33,18 @@ export default function About() {
 
         {/* KANAN: teks */}
         <div>
-          <span className="mb-3 flex items-center gap-2 text-sm font-semibold text-[#F5A623]">
-            <span className="h-[2px] w-4 bg-[#F5A623]" />
-            About Me
-          </span>
-
           <h2 className="text-3xl font-bold text-white sm:text-4xl">
             Siapa itu <span className="italic text-[#F5A623]">{NAME}</span>?
           </h2>
 
           <p className="mt-6 max-w-md leading-relaxed text-white/70">
-            Mahasiswa Manajemen Informatika tingkat akhir yang senang
-            ngerjain hal dari ujung ke ujung — mulai dari coding web,
-            ngolah data jadi insight, sampai bikin desain dan video yang
-            enak dilihat.
+            Saya adalah Fresh Graduate Manajemen Informatika yang memiliki
+            ketertarikan pada pengembangan website, desain digital,
+            serta data. Saya senang membangun solusi yang tidak hanya
+            berjalan dengan baik, tetapi juga mudah digunakan dan memberikan
+            informasi yang bermanfaat. Saat ini saya terus mengembangkan
+            kemampuan melalui berbagai proyek pribadi untuk memperdalam
+            pengalaman dan mengikuti perkembangan teknologi.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-8">
@@ -65,11 +64,44 @@ export default function About() {
               download
               className="group flex items-center gap-3 rounded-full bg-[#F5A623] py-2 pl-6 pr-2 text-sm font-semibold text-[#1B3B2B] shadow-lg transition hover:bg-[#e6981a]"
             >
-              CV Saya
+              Download CV
               <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#1B3B2B] text-white transition group-hover:translate-x-1">
                 <Download className="h-4 w-4" />
               </span>
             </a>
+          </div>
+
+          {/* sosmed + email */}
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            {socials.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target={
+                  social.href.startsWith("mailto:") ? undefined : "_blank"
+                }
+                rel={
+                  social.href.startsWith("mailto:")
+                    ? undefined
+                    : "noopener noreferrer"
+                }
+                aria-label={social.label}
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white transition hover:border-[#F5A623] hover:text-[#F5A623]"
+              >
+                {social.icon ? (
+                  <social.icon className="h-5 w-5" strokeWidth={2} />
+                ) : (
+                  <span className="relative h-5 w-5">
+                    <Image
+                      src={social.imageIcon!}
+                      alt={social.label}
+                      fill
+                      className="object-contain [filter:invert(1)]"
+                    />
+                  </span>
+                )}
+              </a>
+            ))}
           </div>
         </div>
       </div>

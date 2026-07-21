@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { services } from "@/data/services";
+import ToolsRow from "./ToolsRow";
 
 export default function Services() {
   return (
@@ -16,13 +17,14 @@ export default function Services() {
               Services
             </span>
             <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">
-              <span className="italic text-[#F5A623]">Layanan</span> yang
-              Saya Tawarkan
+              <span className="italic text-[#F5A623]">Layanan</span> yang saya
+              tawarkan
             </h2>
           </div>
 
           <a
-            href="#contact"
+            href="https://wa.link/slr4m8"
+            target="_blank"
             className="group flex items-center gap-3 rounded-full bg-[#1B3B2B] py-2 pl-6 pr-2 text-sm font-semibold text-white shadow-lg shadow-[#1B3B2B]/20 transition hover:bg-[#173224]"
           >
             Diskusi Proyek
@@ -41,25 +43,22 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group rounded-2xl bg-slate-50 p-7 transition hover:bg-[#1B3B2B]"
+              className="group rounded-2xl bg-[#1B3B2B] p-7 transition hover:bg-[#0f2a1c]"
             >
-              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-sm">
-                <service.icon
-                  className="h-6 w-6 text-[#1B3B2B]"
-                  strokeWidth={2}
-                />
+              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-[#F5A623] shadow-sm ring-4 ring-white/10">
+                <service.icon className="h-6 w-6 text-white" strokeWidth={2} />
               </span>
 
-              <h3 className="mt-6 text-lg font-bold text-slate-900 group-hover:text-white">
+              <h3 className="mt-6 text-lg font-bold text-white">
                 {service.title}
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-slate-500 group-hover:text-white/70">
+              <p className="mt-3 text-sm leading-relaxed text-white/70">
                 {service.description}
               </p>
 
               <a
                 href={service.href}
-                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-slate-900 group-hover:text-[#F5A623]"
+                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#F5A623] transition group-hover:text-white"
               >
                 Selengkapnya
                 <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
@@ -67,6 +66,8 @@ export default function Services() {
             </motion.div>
           ))}
         </div>
+
+        <ToolsRow />
       </div>
     </section>
   );

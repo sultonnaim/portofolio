@@ -13,21 +13,21 @@ export const services: Service[] = [
     icon: Code2,
     title: "Web Development",
     description:
-      "Bikin website responsif dari nol pakai Next.js & React — cepat, rapi, dan enak dipakai di semua device.",
-    href: "#services",
-  },
-  {
-    icon: BarChart3,
-    title: "Data Analysis",
-    description:
-      "Olah data mentah jadi insight yang gampang dipahami lewat dashboard, visualisasi, dan laporan yang jelas.",
-    href: "#services",
+      "Bikin website yang responsif menggunakan berbagai framerwork cepat, rapi, dan enak dipakai di semua device.",
+    href: "/projects#web",
   },
   {
     icon: Palette,
     title: "Design & Visual",
     description:
       "UI/UX design di Figma, editing gambar di Photoshop, sampai video editing di Premiere Pro & CapCut.",
-    href: "#services",
+    href: "/projects#design",
+  },
+    {
+    icon: BarChart3,
+    title: "Data Analysis",
+    description:
+      "Olah data mentah jadi insight yang gampang dipahami lewat dashboard, visualisasi, dan laporan yang jelas.",
+    href: "/projects#data",
   },
 ];
