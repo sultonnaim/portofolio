@@ -9,6 +9,8 @@ import {
   Play,
   AtSign,
   PenTool,
+  Code2,
+  Database,
 } from "lucide-react";
 import type { Project } from "@/data/projects";
 
@@ -206,6 +208,34 @@ export default function ProjectCategory({
                         }`}
                       >
                         <PenTool className="h-3.5 w-3.5" /> Lihat di Figma
+                      </a>
+                    )}
+                    {project.repoUrl && (
+                      <a
+                        href={project.repoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-xs font-semibold transition ${
+                          isGreen
+                            ? "border-white/25 text-white hover:bg-white/10"
+                            : "border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-50"
+                        }`}
+                      >
+                        <Code2 className="h-3.5 w-3.5" /> Source Code
+                      </a>
+                    )}
+                    {project.datasetUrl && (
+                      <a
+                        href={project.datasetUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-xs font-semibold transition ${
+                          isGreen
+                            ? "border-white/25 text-white hover:bg-white/10"
+                            : "border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-50"
+                        }`}
+                      >
+                        <Database className="h-3.5 w-3.5" /> Lihat Dataset
                       </a>
                     )}
                     {project.videoUrl && (
