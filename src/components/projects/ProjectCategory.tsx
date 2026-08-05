@@ -36,7 +36,18 @@ export default function ProjectCategory({
 }: ProjectCategoryProps) {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState<1 | -1>(1);
+  // default 4:3 dulu sebelum gambar ke-load, biar gak ada "loncatan" layout
+  const [ratio, setRatio] = useState(4 / 3);
   const project = projects[index];
+
+  // batasi rasio antara potrait 3:4 dan landscape 16:9,
+  // biar foto ekstrem (misal story 9:16) gak bikin layout jebol
+  function handleImageLoad(e: React.SyntheticEvent<HTMLImageElement>) {
+    const { naturalWidth, naturalHeight } = e.currentTarget;
+    const raw = naturalWidth / naturalHeight;
+    const clamped = Math.min(Math.max(raw, 3 / 4), 16 / 9);
+    setRatio(clamped);
+  }
 
   function go(dir: 1 | -1) {
     setDirection(dir);
@@ -93,9 +104,10 @@ export default function ProjectCategory({
             {/* GAMBAR / SLIDE */}
             <div className={imageSide === "right" ? "md:order-2" : ""}>
               <div
-                className={`relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-slate-200 ring-1 ${
+                className={`relative w-full overflow-hidden rounded-2xl bg-slate-200 ring-1 transition-[aspect-ratio] duration-300 ${
                   isGreen ? "ring-white/10" : "ring-[#1B3B2B]/10"
                 }`}
+                style={{ aspectRatio: ratio }}
               >
                 <AnimatePresence
                   initial={false}
@@ -107,11 +119,12 @@ export default function ProjectCategory({
                     src={project.image}
                     alt={project.title}
                     custom={direction}
+                    onLoad={handleImageLoad}
                     initial={{ x: direction === 1 ? 60 : -60, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     exit={{ x: direction === 1 ? -60 : 60, opacity: 0 }}
                     transition={{ duration: 0.4, ease: "easeOut" }}
-                    className="absolute inset-0 h-full w-full object-cover"
+                    className="absolute inset-0 h-full w-full object-contain"
                   />
                 </AnimatePresence>
 
