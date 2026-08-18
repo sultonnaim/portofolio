@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { services } from "@/data/services";
-import ToolsRow from "./ToolsRow";
 
 export default function Services() {
   return (
@@ -17,14 +16,15 @@ export default function Services() {
               Services
             </span>
             <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">
-              <span className="italic text-[#F5A623]">Layanan</span> yang saya
-              tawarkan
+              <span className="italic text-[#F5A623]">Layanan</span> yang
+              Saya Tawarkan
             </h2>
           </div>
 
           <a
             href="https://wa.link/slr4m8"
             target="_blank"
+            rel="noopener noreferrer"
             className="group flex items-center gap-3 rounded-full bg-[#1B3B2B] py-2 pl-6 pr-2 text-sm font-semibold text-white shadow-lg shadow-[#1B3B2B]/20 transition hover:bg-[#173224]"
           >
             Diskusi Proyek
@@ -45,8 +45,11 @@ export default function Services() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="group rounded-2xl bg-[#1B3B2B] p-7 transition hover:bg-[#0f2a1c]"
             >
-              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-[#F5A623] shadow-sm ring-4 ring-white/10">
-                <service.icon className="h-6 w-6 text-white" strokeWidth={2} />
+              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#F5A623] to-[#F5A623] shadow-sm ring-4 ring-white/10">
+                <service.icon
+                  className="h-6 w-6 text-white"
+                  strokeWidth={2}
+                />
               </span>
 
               <h3 className="mt-6 text-lg font-bold text-white">
@@ -66,8 +69,6 @@ export default function Services() {
             </motion.div>
           ))}
         </div>
-
-        <ToolsRow />
       </div>
     </section>
   );
