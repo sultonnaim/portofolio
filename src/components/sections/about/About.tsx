@@ -43,6 +43,7 @@ export default function About() {
                   src="/images/profile.png"
                   alt={NAME}
                   fill
+                  sizes="(max-width: 768px) 160px, 220px"
                   className="object-cover"
                 />
               </div>
@@ -86,6 +87,7 @@ export default function About() {
                         src={tool.icon}
                         alt={tool.name}
                         fill
+                        sizes="16px"
                         className="object-contain"
                       />
                     </span>
@@ -129,7 +131,7 @@ export default function About() {
 
         {/* PERSONAL / TECHNICAL SKILLS */}
         <div className="mt-14 border-t border-white/10 pt-12">
-          <SectionHeading>Personal skill</SectionHeading>
+          <SectionHeading>Kemampuan Lainnya</SectionHeading>
           <div className="flex flex-wrap gap-2">
             {personalSkills.map((skill, i) => (
               <motion.span
@@ -187,6 +189,7 @@ export default function About() {
                       src={social.imageIcon!}
                       alt={social.label}
                       fill
+                      sizes="16px"
                       className="object-contain [filter:invert(1)]"
                     />
                   </span>

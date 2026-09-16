@@ -13,9 +13,13 @@ export const experience: TimelineEntry[] = [
     period: "2023 - 2026",
   },
   {
-      title: "Staff Oprasional (Full Time)",
-    subtitle:
-      "New Planet 99 Bojonegoro Batik & Katering",
-    period: "2023 - 2026",
+    title: "Staff Oprasional (Full Time)",
+    subtitle: "New Planet 99 Bojonegoro Batik & Katering",
+    period: "2021",
+  },
+  {
+    title: "Vector artist (Freelance)",
+    subtitle: "Fiverr",
+    period: "2021",
   },
 ];

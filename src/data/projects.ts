@@ -1,7 +1,13 @@
+export type ProjectCategoryId = "web" | "design" | "data";
+
 export interface Project {
+  slug: string;
+  category: ProjectCategoryId;
   title: string;
   description: string;
   image: string;
+  gallery?: string[];
+  pdfUrl?: string;
   tags?: string[];
   liveUrl?: string;
   repoUrl?: string;
@@ -13,74 +19,109 @@ export interface Project {
 
 export const webProjects: Project[] = [
   {
-    title: "SIMPEL MANIS - DINKOPDAG",
+    slug: "sistem-informasi-taman",
+    category: "web",
+    title: "Website Taman Kota Surabaya",
     description:
-      "Website ini merupakan project magang saya di Dinas Komunikasi dan Informatika Kota Surabaya, website ini merupakan Sistem Informasi Manajemen (SIM), yang digunakan DINKOPDAG untuk merekap pengusaha penjualan alkohol di surabaya, sistem ini mengggunakan framework laravel dan postgresql untuk data basenya",
-    image: "/images/projects/simpelmanis.png",
-    tags: ["Laravel", "TailwindCSS", "PostgreSQL"],
-    repoUrl: "https://github.com/sultonnaim/magang.git",
-  },
-  {
-    title: "Taman Surabaya-Crowd Counting",
-    description:
-      "Website ini merupakan tugas akhir saya, dengan sistem microservice, lalu mengimplementasikan model deep learning yaitu YOLOv11 untuk menghitung keramaian manusia ditaman menggunakan streaming dari CCTV",
-    image: "/images/projects/websitetugasakhir.png",
+      "Aplikasi manajemen nilai dan absensi untuk kampus, dibangun pakai Laravel dan terintegrasi dengan database PostgreSQL.",
+    image: "/images/projects/webta.webp",
+    gallery: ["/images/projects/webta.webp"],
     tags: ["React", "Python", "RestAPI"],
-    repoUrl: "https://github.com/sultonnaim/CrowdSystem.git",
+    liveUrl: "https://example.com",
+    repoUrl: "https://github.com/sultonnaim/sistem-akademik",
   },
   {
-    title: "Rebuild BLC Surabaya",
+    slug: "website-blc-surabaya",
+    category: "web",
+    title: "Rebuild Website BLC Surabaya",
     description:
-      "Website ini merupakan project magang saya di Dinas Komunikasi dan Informatika Kota Surabaya, website ini merupakan Sistem Informasi Manajemen (SIM), yang digunakan oleh diskominfo untuk bagian pelayanan masyarakat di BLC Surabaya, framework yang digunakan yaitu laravel dan Mysql untuk databasenya",
-    image: "/images/projects/blc.png",
-    tags: ["Laravel", "TailwindCSS", "Mysql"],
-    repoUrl: "https://github.com/sultonnaim/projectBLC.git",
+      "Membangun ulang website Broadband Learning Center Surabaya menggunakan Laravel — merancang halaman utama, dashboard admin internal, serta pengembangan basis data selama magang di Diskominfo Surabaya.",
+    image: "/images/projects/blc.webp",
+    gallery: ["/images/projects/blc.webp"],
+    tags: ["Laravel", "MySQL", "Magang"],
+    repoUrl: "https://github.com/sultonnaim/blc-surabaya",
+  },
+  {
+    slug: "website-simple-manis",
+    category: "web",
+    title: "Rebuild Website BLC Surabaya",
+    description:
+      "Membangun ulang website Broadband Learning Center Surabaya menggunakan Laravel — merancang halaman utama, dashboard admin internal, serta pengembangan basis data selama magang di Diskominfo Surabaya.",
+    image: "/images/projects/simpel.webp",
+    gallery: ["/images/projects/simpel.webp"],
+    tags: ["Laravel", "MySQL", "Magang"],
+    repoUrl: "https://github.com/sultonnaim/blc-surabaya",
   },
 ];
 
 export const designProjects: Project[] = [
   {
-    title: "Konten Podcast Funting",
+    slug: "konten-visual-reels",
+    category: "design",
+    title: "Konten Visual & Reels",
     description:
-      "Konten youtube podcast ini merupakan salah satu kegiatan organisasi yang saya ikuti sebagai teknis di Broadcasting UNESA, Video ini diedit menggunakan Premier pro dan photoshop, selain editing saya juga mengoprasikan salah satu kamera dalam podcast ini",
-    image: "/images/projects/youtube.png",
+      "Desain feed Instagram dan editing video reels untuk brand lokal, dari konsep sampai render final di Premiere Pro & CapCut.",
+    image: "/images/projects/video.webp",
+    gallery: ["/images/projects/video.webp"],
     tags: ["Photoshop", "Premiere Pro", "CapCut"],
-    videoUrl: "https://youtu.be/l0z6pckEpJw?si=pKm3FjaeVKkDRLjr",
+    instagramUrl: "https://instagram.com",
   },
   {
-    title: "Design -Poster,Feeds & reels",
+    slug: "Poster",
+    category: "design",
+    title: "Konten Visual & Reels",
     description:
-      "Pada Penagalaman ini,saya mengedit berbagai poster dari kegiatan, membuat konten reels, dan juga membuat ide sebuah konten yang akan di  upload",
-    image: "/images/projects/editing.jpeg",
-    tags: ["Photoshop", "CapCut", "Canva"],
-    instagramUrl: "https://www.instagram.com/sssltn29",
+      "Desain feed Instagram dan editing video reels untuk brand lokal, dari konsep sampai render final di Premiere Pro & CapCut.",
+    image: "/images/projects/poster.webp",
+    gallery: ["/images/projects/poster.webp"],
+    tags: ["Photoshop", "Premiere Pro", "CapCut"],
+    instagramUrl: "https://instagram.com",
   },
   {
-    title: "Design Aplikasi Bus Surabaya",
+    slug: "ui-aplikasi-mobile",
+    category: "design",
+    title: "Redesign UI Aplikasi Mobile",
     description:
-      "Desgin ini merupakan Ui/Ux Untuk Aplikasi Bus Surabaya yang saya buat, dengan beberapa fitur yang disambungkan menggunakan prototye dan design ini berkesematan di presentasikan kepada masiswa dari vietnam",
-    image: "/images/projects/uiux.png",
+      "Riset ulang alur pengguna dan desain ulang tampilan aplikasi mobile dari nol pakai Figma, lengkap dengan prototype interaktif.",
+    image: "/images/projects/ui.webp",
+    gallery: ["/images/projects/uiux.webp"],
+    pdfUrl: "/portfolio/ui-aplikasi-mobile.pdf",
     tags: ["Figma", "UI/UX", "Prototyping"],
-    figmaUrl: "https://www.figma.com/proto/G1EKTVIYg7rgpZkU5IPMdj/ui-ux-uas?node-id=0-1&t=mkuWEgYn8GQGluV7-1",
+    videoUrl: "https://youtube.com",
+    figmaUrl: "https://figma.com/proto/xxxxx",
   },
-  
 ];
 
 export const dataProjects: Project[] = [
   {
+    slug: "dashboard-analisis-penjualan",
+    category: "data",
     title: "Dashboard Analisis Penjualan",
     description:
-      "Mengolah data penjualan mentah jadi dashboard interaktif yang nunjukin tren bulanan, produk terlaris, dan proyeksi sederhana.",
-    image: "/images/projects/data1.png",
-    tags: ["Python", "PostgreSQL", "PowerBI"],
-    repoUrl: "https://github.com/sultonnaim/enterprise-sales-data-warehouse.git",
+      "Mengolah data penjualan mentah jadi dashboard interaktif di Power BI yang nunjukin tren bulanan, produk terlaris, dan proyeksi sederhana.",
+    image: "/images/projects/dashboard.webp",
+    gallery: ["/images/projects/dashbard.webp"],
+    tags: ["Power BI", "DAX", "Data Visualization"],
+    liveUrl: "https://app.powerbi.com/view?r=xxxxx",
+    repoUrl: "https://github.com/sultonnaim/dashboard-penjualan",
   },
- {
+  {
+    slug: "crowd-counting-yolov11",
+    category: "data",
     title: "Crowd Counting dengan YOLOv11",
     description:
-      "Model deep learning untuk menghitung jumlah orang dalam kerumunan dari citra, dilatih pakai dataset custom yang saya buat dan anotasi sendiri di Roboflow.",
-    image: "/images/projects/yolo.png",
+      "Model deep learning untuk menghitung jumlah orang dalam kerumunan dari citra, dilatih pakai dataset custom yang saya buat dan anotasi sendiri di Roboflow. Ini adalah tugas akhir saya, terbit di Jurnal Smatika Sinta 4.",
+    image: "/images/projects/dataset.webp",
+    gallery: ["/images/projects/dataset.webp"],
     tags: ["YOLOv11", "Computer Vision", "Roboflow", "Python"],
-    repoUrl: "https://github.com/sultonnaim/CrowdSystem.git",
+    repoUrl: "https://github.com/sultonnaim/crowd-counting-yolov11",
+    datasetUrl: "https://universe.roboflow.com/sultonnaim/nama-dataset",
+    videoUrl: "https://youtube.com/watch?v=xxxxx",
   },
+];
+
+export const allProjects: Project[] = [
+  ...webProjects,
+  ...designProjects,
+  ...dataProjects,
 ];
