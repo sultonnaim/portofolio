@@ -10,7 +10,7 @@ import RotatingBadge from "./RotatingBadge";
 
 // Ganti dengan identitasmu sendiri
 const NAME = "M. Sultonun Naim";
-const ROLES = ["Web Developer", "Data Analyst", "UI/UX Designer"];
+const ROLES = ["Web Developer", "Data Analyst", "Graphic Designer "];
 
 export default function Atas() {
   return (
