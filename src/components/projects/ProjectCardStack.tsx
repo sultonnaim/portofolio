@@ -62,10 +62,17 @@ export default function ProjectCardStack({
                   >
                     {project.title}
                   </p>
+                  <p
+                    className={`mt-1.5 line-clamp-2 text-xs leading-snug sm:text-sm ${
+                      isGreen ? "text-white/60" : "text-slate-500"
+                    }`}
+                  >
+                    {project.description}
+                  </p>
                   {project.tags && (
                     <p
-                      className={`mt-1.5 text-xs sm:text-sm ${
-                        isGreen ? "text-white/50" : "text-slate-400"
+                      className={`mt-2 text-[11px] font-medium sm:text-xs ${
+                        isGreen ? "text-[#F5A623]/80" : "text-[#8a5c10]"
                       }`}
                     >
                       {project.tags.slice(0, 2).join(" • ")}
@@ -102,7 +109,19 @@ export default function ProjectCardStack({
               >
                 {isFront ? (
                   <Link
-                    href={`/projects/${categoryId}/${project.slug}`}
+                    href={
+                      project.pdfUrl ??
+                      project.liveUrl ??
+                      `/projects/${categoryId}/${project.slug}`
+                    }
+                    target={
+                      project.pdfUrl || project.liveUrl ? "_blank" : undefined
+                    }
+                    rel={
+                      project.pdfUrl || project.liveUrl
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
                     className="group block h-full w-full transition"
                   >
                     <div className="h-full w-full transition duration-300 group-hover:-translate-y-1">
@@ -128,8 +147,7 @@ export default function ProjectCardStack({
               ? "bg-white/10 text-white hover:bg-white/15"
               : "bg-slate-100 text-slate-700 hover:bg-slate-200"
           }`}
-        >
-          Next
+        > Project Lain
           <SkipForward className="h-3.5 w-3.5" />
         </button>
       )}

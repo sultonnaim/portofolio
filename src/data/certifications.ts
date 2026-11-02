@@ -3,4 +3,5 @@ export const certifications: string[] = [
   "Kaggle Intro & Advanced SQL",
   "RevoU Data Analyst",
   "KarirNex Data Analyst",
+  "KarirNex Microsoft Office Specialist",
 ];
