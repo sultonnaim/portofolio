@@ -10,7 +10,7 @@ import RotatingBadge from "./RotatingBadge";
 
 // Ganti dengan identitasmu sendiri
 const NAME = "M. Sultonun Naim";
-const ROLES = ["Web Developer", "Data Analyst", "Graphic Designer "];
+const ROLES = ["Web Developer", "Data Analyst", "Graphic Designer"];
 
 export default function Atas() {
   return (
@@ -21,14 +21,15 @@ export default function Atas() {
           <HeroBadge text="Hallo Semuanya!" variant="dashed" />
 
           <h1 className="mt-6 text-4xl font-bold leading-tight text-slate-900 sm:text-5xl">
-            Saya{" "}
-            <span className="italic text-[#F5A623]">{NAME},</span>
+            Saya <span className="italic text-[#F5A623]">{NAME},</span>
           </h1>
 
           <RoleSwitcher />
 
           <p className="mt-6 max-w-md leading-relaxed text-slate-500">
-            Berfokus pada pengembangan web, analisis data, dan desain digital untuk membangun solusi yang fungsional, mudah digunakan, dan terus berkembang seiring pengalaman.
+            Berfokus pada pengembangan web, analisis data, dan desain digital
+            untuk membangun solusi yang fungsional, mudah digunakan, dan terus
+            berkembang seiring pengalaman.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -41,13 +42,17 @@ export default function Atas() {
                 <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
               </span>
             </Link>
+
+            {/* Lihat CV — link Google Drive, dibuka di tab baru dan tampil
+                di viewer Drive (bukan ke-download). Ganti ID_FILE_DRIVE
+                dengan ID file CV kamu. */}
             <a
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=namakamu@gmail.com&su=Halo"
+              href="https://drive.google.com/file/d/1oT-1FjHL0czAtg5hvj3iQsXobo88q08n/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full border border-slate-300 px-6 py-3.5 text-sm font-semibold text-slate-900 transition hover:border-slate-400 hover:bg-slate-50"
             >
-              Hubungi Saya
+              Lihat CV
             </a>
           </div>
         </div>
