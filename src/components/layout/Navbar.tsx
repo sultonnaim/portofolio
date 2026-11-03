@@ -7,10 +7,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const NAV_LINKS = [
-  { label: "Home", href: "/#home", id: "home", isPage: false },
-  { label: "Services", href: "/#services", id: "services", isPage: false },
-  { label: "About", href: "/#about", id: "about", isPage: false },
-  { label: "Projects", href: "/projects", id: "projects", isPage: true },
+  { label: "Beranda", href: "/#home", id: "home", isPage: false },
+  { label: "Layanan", href: "/#services", id: "services", isPage: false },
+  { label: "Tentang", href: "/#about", id: "about", isPage: false },
+  { label: "Proyek", href: "/projects", id: "projects", isPage: true },
 ] as const;
 
 const EMAIL_LINK =
