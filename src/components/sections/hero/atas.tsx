@@ -6,7 +6,6 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Code2, Palette } from "lucide-react";
 import HeroBadge from "./HeroBadge";
-import RotatingBadge from "./RotatingBadge";
 
 // Ganti dengan identitasmu sendiri
 const NAME = "M. Sultonun Naim";
@@ -72,8 +71,6 @@ export default function Atas() {
               className="rounded-[45%_55%_60%_40%/55%_45%_60%_40%] object-cover"
             />
           </div>
-
-          <RotatingBadge className="absolute -right-2 -top-2 sm:-right-6 sm:-top-6" />
 
           <HeroBadge
             text="Designer"
