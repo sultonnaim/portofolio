@@ -158,7 +158,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
           )}
         </div>
 
-        {/* PDF EMBED — kalau project ini punya portofolio dalam bentuk PDF */}
+
         {project.pdfUrl && (
           <div className="mt-12 overflow-hidden rounded-2xl ring-1 ring-slate-200">
             <iframe
@@ -169,10 +169,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
           </div>
         )}
 
-        {/* GALERI FOTO — sengaja pakai <img> biasa (bukan next/image fill)
-            supaya tinggi gambar ngikutin proporsi aslinya masing-masing,
-            gak dipaksa 16:9 dan gak ada yang kepotong. Cocok buat galeri
-            hasil case-study yang kamu susun sendiri di Figma/Photoshop. */}
+
         <div className="mt-12 space-y-6">
           {gallery.map((img) => (
             <img

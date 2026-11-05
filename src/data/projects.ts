@@ -7,6 +7,7 @@ export interface Project {
   description: string;
   image: string;
   gallery?: string[];
+  pageUrl?: string;
   pdfUrl?: string;
   tags?: string[];
   liveUrl?: string;
@@ -23,64 +24,73 @@ export const webProjects: Project[] = [
     category: "web",
     title: "Website Taman Kota Surabaya",
     description:
-      "Website taman kota surabaya sebagai wadah informasi, dengan sistem informasi keramaian dengan deep learning.",
-    image: "/images/projects/webta.webp",
-    gallery: ["/images/projects/webta.webp"],
-    tags: ["React", "Python -RestAPI"],
+      "Antarmuka website untuk sistem penghitung kerumunan berbasis microservice di Taman Kota Surabaya — tugas akhir saya. Menampilkan hasil deteksi model YOLOv11 secara real-time lewat integrasi REST API.",
+    image: "/images/projects/webta.png",
     liveUrl: "https://crowd-system-nine.vercel.app",
   },
   {
     slug: "website-blc-surabaya",
     category: "web",
-    title: "Website BLC Surabaya",
+    title: "Rebuild Website BLC Surabaya",
     description:
-      "Website Broadband Learning Center Surabaya menggunakan Laravel — Merancang ulang untuk Diskominfo Surabaya.",
-    image: "/images/projects/blc.webp",
-    gallery: ["/images/projects/blc.webp"],
-    tags: ["Laravel", "MySQL"],
-    repoUrl: "https://github.com/sultonnaim/blc-surabaya",
+      "Membangun ulang website Broadband Learning Center Surabaya menggunakan Laravel — merancang halaman utama, dashboard admin internal, serta pengembangan basis data selama magang di Diskominfo Surabaya.",
+    image: "/images/projects/blc.png",
+    repoUrl: "https://github.com/sultonnaim/projectBLC",
   },
   {
-    slug: "website simpel manis",
+    slug: "website-simple-manis",
     category: "web",
-    title: " Website Simpel Manis DINKOPDAG",
-    description: "Web administrasi untuk informasi penjualan alkohol Dinas Koperasi dan perdagangan",
-    image: "/images/projects/simpel.webp",
-    tags: ["Laravel", "PostgreSql"],
-    gallery: ["/images/projects/simpel.webp"],
+    title: "Website Simpel Manis",
+    description: "[ISI DESKRIPSI PROJECT DI SINI]",
+    image: "/images/projects/simpelmanis.png",
+    repoUrl: "https://github.com/sultonnaim/magang",
+    tags: [],
+  },
+  {
+    slug: "website-odoo",
+    category: "web",
+    title: "Website ERP odoo",
+    description: "[ISI DESKRIPSI PROJECT DI SINI]",
+    image: "/images/projects/odoo.png",
+    repoUrl: "https://github.com/sultonnaim/odoo-project",
+    tags: [],
   },
 ];
 
 export const designProjects: Project[] = [
   {
-    slug: "konten-visual-reels",
+    slug: "konten-sosiaomedia",
     category: "design",
     title: "Konten Visual & Reels",
     description:
-      "Desain feed Instagram dan editing video youtebe, dari konsep sampai selesai final di Premiere Pro & CapCut.",
-    image: "/images/projects/video.webp",
-    gallery: ["/images/projects/video.webp"],
-    tags: [ "Premiere Pro", "CapCut"],
+      "Desain feed Instagram dan editing video reels untuk brand lokal, dari konsep sampai render final di Premiere Pro & CapCut.",
+    image: "/images/projects/sosmed.png",
+    instagramUrl: "https://www.instagram.com/research.bemunesa",
   },
   {
     slug: "poster",
     category: "design",
-    title: "Design Poster dan Vector",
-    description: "Berbagai desain seperti poster, vector, desain cover. Untuk kebutuhan sosmed, media dan website",
-    image: "/images/projects/poster.webp",
-    gallery: ["/images/projects/poster.webp"],
-    tags: ["Photohshop", "Figma -Canva"],
+    title: "Galeri Poster & Vector",
+    description: "Kumpulan poster dan vector illustration hasil karya saya.",
+    image: "/images/projects/vector.png",
+    instagramUrl: "https://www.instagram.com/sssltn29",
   },
   {
     slug: "ui-aplikasi-mobile",
     category: "design",
-    title: "UI Aplikasi Mobile",
+    title: "Redesign UI Aplikasi Mobile",
     description:
-      "Riset ulang alur pengguna dan desain ulang tampilan aplikasi mobile dari nol pakai Figma, lengkap dengan prototype.",
-    image: "/images/projects/ui.webp",
-    gallery: ["/images/projects/uiux.webp"],
+      "Riset ulang alur pengguna dan desain ulang tampilan aplikasi mobile dari nol pakai Figma, lengkap dengan prototype interaktif.",
+    image: "/images/projects/uiux.png",
     pdfUrl: "/portfolio/ui-aplikasi-mobile.pdf",
-    tags: ["Figma", "UI/UX"],
+  },
+  {
+    slug: "youtube-konten",
+    category: "design",
+    title: "video kontenyt",
+    description: "",
+    image: "/images/projects/yt.png",
+    videoUrl: "https://youtu.be/l0z6pckEpJw",
   },
 ];
 
@@ -91,10 +101,8 @@ export const dataProjects: Project[] = [
     title: "Dashboard Analisis Penjualan",
     description:
       "Mengolah data penjualan mentah jadi dashboard interaktif di Power BI yang nunjukin tren bulanan, produk terlaris, dan proyeksi sederhana.",
-    image: "/images/projects/dashboard.webp",
-    gallery: ["/images/projects/dashbard.webp"],
-    tags: ["Power BI", "DAX", "Data Visualization"],
-    repoUrl: "https://github.com/sultonnaim/dashboard-penjualan",
+    image: "/images/projects/dashboard.png",
+    repoUrl: "https://github.com/sultonnaim/enterprise-sales-data-warehouse",
   },
   {
     slug: "crowd-counting-yolov11",
@@ -102,10 +110,36 @@ export const dataProjects: Project[] = [
     title: "Crowd Counting dengan YOLOv11",
     description:
       "Model deep learning untuk menghitung jumlah orang dalam kerumunan dari citra, dilatih pakai dataset custom yang saya buat dan anotasi sendiri di Roboflow. Ini adalah tugas akhir saya, terbit di Jurnal Smatika Sinta 4.",
-    image: "/images/projects/dataset.webp",
-    gallery: ["/images/projects/dataset.webp"],
-    tags: ["YOLOv11", "Computer Vision"],
+    image: "/images/projects/yolo.png",
     repoUrl: "https://github.com/sultonnaim/crowd-counting-yolov11",
+  },
+  {
+    slug: "datapenjualan-bykarirnex",
+    category: "data",
+    title: "Pengolahan hasil jual(by karirnex)",
+    description:
+      "Mengolah data penjualan mentah jadi dashboard interaktif di Power BI yang nunjukin tren bulanan, produk terlaris, dan proyeksi sederhana.",
+    image: "/images/projects/karirnex1.png",
+    repoUrl: "https://github.com/sultonnaim/dashboard-penjualan",
+  },
+  {
+    slug: "dashboardpenjualanrevou",
+    category: "data",
+    title: "Dashboard Analisis Penjualan (byrevou)",
+    description:
+      "Mengolah data penjualan mentah jadi dashboard interaktif di Power BI yang nunjukin tren bulanan, produk terlaris, dan proyeksi sederhana.",
+    image: "/images/projects/revou.png",
+    repoUrl: "https://github.com/sultonnaim/dashboard-penjualan",
+  },
+  {
+    // slug dibedakan: sebelumnya sama persis dengan project pertama di atas
+    slug: "dashboard-bootcamp-karirnex",
+    category: "data",
+    title: "Dashboard Analisis (bootcamp microsoft by karirnex)",
+    description:
+      "Mengolah data penjualan mentah jadi dashboard interaktif di Power BI yang nunjukin tren bulanan, produk terlaris, dan proyeksi sederhana.",
+    image: "/images/projects/karirnex2.png",
+    repoUrl: "https://github.com/sultonnaim/dashboard-penjualan",
   },
 ];
 
