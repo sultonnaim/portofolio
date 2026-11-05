@@ -1,28 +1,27 @@
+
 "use client";
 
 import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Great_Vibes } from "next/font/google";
 import type { Project } from "@/data/projects";
-
-const greatVibes = Great_Vibes({
-  weight: "400",
-  subsets: ["latin"],
-});
 
 export interface ProjectSectionData {
   id: string;
-  categoryName: string;
   title: string;
+  description: string;
+  featuredProject: Project;
   projects: Project[];
 }
 
-// tujuan klik kartu, urutan prioritas:
-// pageUrl (halaman di web ini) → pdfUrl → liveUrl → repoUrl (GitHub)
-// → instagramUrl → videoUrl (YouTube) → halaman detail
+// Menentukan tujuan ketika project diklik
 function getLink(project: Project) {
-  if (project.pageUrl) return { href: project.pageUrl, external: false };
+  if (project.pageUrl) {
+    return {
+      href: project.pageUrl,
+      external: false,
+    };
+  }
 
   const externalUrl =
     project.pdfUrl ??
@@ -30,7 +29,13 @@ function getLink(project: Project) {
     project.repoUrl ??
     project.instagramUrl ??
     project.videoUrl;
-  if (externalUrl) return { href: externalUrl, external: true };
+
+  if (externalUrl) {
+    return {
+      href: externalUrl,
+      external: true,
+    };
+  }
 
   return {
     href: `/projects/${project.category}/${project.slug}`,
@@ -38,7 +43,29 @@ function getLink(project: Project) {
   };
 }
 
-// Section dengan tombol panah navigasi
+function ProjectLink({
+  project,
+  children,
+  className,
+}: {
+  project: Project;
+  children: React.ReactNode;
+  className?: string;
+}) {
+  const { href, external } = getLink(project);
+
+  return (
+    <Link
+      href={href}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}
+      className={className}
+    >
+      {children}
+    </Link>
+  );
+}
+
 export default function ProjectSection({
   section,
 }: {
@@ -46,102 +73,189 @@ export default function ProjectSection({
 }) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  // Fungsi scroll otomatis saat panah diklik
+  // Geser daftar project ke kiri atau kanan
   const scroll = (direction: "left" | "right") => {
-    if (scrollContainerRef.current) {
-      const { scrollLeft, clientWidth } = scrollContainerRef.current;
-      const scrollAmount = clientWidth * 0.75;
-      scrollContainerRef.current.scrollTo({
-        left:
-          direction === "left"
-            ? scrollLeft - scrollAmount
-            : scrollLeft + scrollAmount,
-        behavior: "smooth",
-      });
-    }
+    if (!scrollContainerRef.current) return;
+
+    const { scrollLeft, clientWidth } =
+      scrollContainerRef.current;
+
+    const amount = clientWidth * 0.75;
+
+    scrollContainerRef.current.scrollTo({
+      left:
+        direction === "left"
+          ? scrollLeft - amount
+          : scrollLeft + amount,
+      behavior: "smooth",
+    });
   };
 
+  const featured = section.featuredProject;
+
   return (
-    <section id={section.id} className="scroll-mt-28">
-      {/* Header Section */}
-      <div className="text-center mb-6">
-        <span
-          className={`${greatVibes.className} text-[#F5A623] text-3xl md:text-4xl block tracking-wide font-normal drop-shadow`}
-        >
-          {section.categoryName}
-        </span>
-        <h2 className="text-3xl md:text-4xl font-extrabold text-white uppercase tracking-wider -mt-2 drop-shadow-md">
+    <section
+      id={section.id}
+      className="scroll-mt-28 space-y-7"
+    >
+      {/* Judul Kategori */}
+      <div className="space-y-2">
+        <h2 className="text-2xl font-bold uppercase tracking-wide text-white md:text-3xl">
           {section.title}
         </h2>
+
+        <p className="text-sm text-white/65 md:text-base">
+          {section.description}
+        </p>
       </div>
 
-      {/* KONTAINER KACA TRANSPARAN */}
-      <div className="relative overflow-hidden rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 p-6 md:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
-        {/* Glow efek latar di dalam kaca */}
-        <div className="absolute -top-24 -left-24 w-72 h-72 bg-white/10 rounded-full blur-2xl pointer-events-none" />
+      {/* PROJECT UTAMA */}
+      <ProjectLink
+        project={featured}
+        className="group grid overflow-hidden rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] transition duration-300 hover:bg-white/15 md:grid-cols-2"
+      >
+        {/* Informasi Project */}
+        <div className="flex flex-col justify-center p-6 md:p-9 lg:p-12">
+          <h3 className="text-2xl font-bold leading-tight text-white transition-colors duration-300 group-hover:text-[#F5A623] md:text-3xl">
+            {featured.title}
+          </h3>
 
-        {/* Tombol Panah Kiri */}
-        <button
-          onClick={() => scroll("left")}
-          aria-label="Scroll Left"
-          className="absolute left-2 top-1/2 -translate-y-1/2 z-30 flex h-12 w-12 items-center justify-center rounded-full bg-black/40 backdrop-blur-md border border-white/30 text-white shadow-lg transition hover:bg-emerald-500 hover:scale-110 active:scale-95"
-        >
-          <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
-          </svg>
-        </button>
+          <p className="mt-4 text-sm leading-7 text-white/75 md:text-base">
+            {featured.description}
+          </p>
 
-        {/* Tombol Panah Kanan */}
-        <button
-          onClick={() => scroll("right")}
-          aria-label="Scroll Right"
-          className="absolute right-2 top-1/2 -translate-y-1/2 z-30 flex h-12 w-12 items-center justify-center rounded-full bg-black/40 backdrop-blur-md border border-white/30 text-white shadow-lg transition hover:bg-emerald-500 hover:scale-110 active:scale-95"
-        >
-          <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
-          </svg>
-        </button>
-
-        {/* 1 baris kartu, scrollbar disembunyikan.
-            px-14 supaya kartu pertama/terakhir tidak tertutup tombol panah,
-            pt-10 supaya kartu yang terangkat saat hover tidak terpotong. */}
-        <div
-          ref={scrollContainerRef}
-          className="relative z-10 flex flex-nowrap gap-5 overflow-x-auto pt-10 pb-8 px-14 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-        >
-          {section.projects.map((project, index) => {
-            const { href, external } = getLink(project);
-            const hoverRotate =
-              index % 2 === 0 ? "hover:-rotate-3" : "hover:rotate-3";
-
-            return (
-              <div
-                key={project.slug}
-                className="group relative flex-shrink-0 w-52 sm:w-60"
-              >
-                <Link
-                  href={href}
-                  target={external ? "_blank" : undefined}
-                  rel={external ? "noopener noreferrer" : undefined}
-                  className={`relative block aspect-[4/5] w-full overflow-hidden rounded-2xl bg-black/30 border border-white/15 shadow-md transition-all duration-300 ease-out transform hover:-translate-y-6 hover:scale-105 ${hoverRotate} hover:shadow-[0_25px_35px_rgba(0,0,0,0.75)] hover:border-emerald-400/80 z-10 hover:z-20`}
+          {/* Tags */}
+          {featured.tags && featured.tags.length > 0 && (
+            <div className="mt-5 flex flex-wrap gap-2">
+              {featured.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-[#F5A623]/30 bg-[#F5A623]/10 px-3 py-1.5 text-xs font-medium text-[#FFD17A]"
                 >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+
+          <div className="mt-7 flex items-center gap-2 text-sm font-semibold text-[#F5A623]">
+            Lihat Proyek
+            <span className="transition-transform duration-300 group-hover:translate-x-2">
+              →
+            </span>
+          </div>
+        </div>
+
+        {/* Gambar Project Tanpa Border / Frame */}
+        <div className="relative min-h-[260px] md:min-h-[360px]">
+          <Image
+            src={featured.image}
+            alt={featured.title}
+            fill
+            priority
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className={`transition-transform duration-700 group-hover:scale-105 ${
+              section.id === "design"
+                ? "object-contain p-4 md:p-7"
+                : "object-contain p-3 md:p-5"
+            }`}
+          />
+        </div>
+      </ProjectLink>
+
+      {/* PROJECT LAINNYA - HORIZONTAL SCROLL */}
+      {section.projects.length > 0 && (
+        <div className="relative">
+
+          {/* Tombol Geser Kiri */}
+          <button
+            onClick={() => scroll("left")}
+            aria-label="Geser ke kiri"
+            className="absolute -left-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-[#123D29]/90 text-white shadow-lg backdrop-blur-md transition hover:scale-110 hover:bg-[#F5A623] hover:text-[#173522] md:-left-5"
+          >
+            <svg
+              className="h-5 w-5 fill-current"
+              viewBox="0 0 24 24"
+            >
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+            </svg>
+          </button>
+
+          {/* Daftar Project */}
+          <div
+            ref={scrollContainerRef}
+            className="relative flex flex-nowrap gap-5 overflow-x-auto scroll-smooth px-2 py-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {section.projects.map((project) => (
+              <ProjectLink
+                key={project.slug}
+                project={project}
+                className="group w-[260px] flex-shrink-0 overflow-hidden rounded-2xl border border-white/20 bg-white/10 shadow-lg backdrop-blur-xl transition duration-300 hover:-translate-y-2 hover:bg-white/15 sm:w-[280px]"
+              >
+                {/* Gambar */}
+                <div className="relative aspect-[16/10] overflow-hidden bg-white/5">
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    sizes="(max-width: 640px) 208px, 240px"
-                    className="object-cover transition duration-500 group-hover:scale-110"
+                    sizes="280px"
+                    className={`transition-transform duration-500 group-hover:scale-105 ${
+                      section.id === "design"
+                        ? "object-contain p-2"
+                        : "object-cover"
+                    }`}
                   />
+                </div>
 
-                  <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent px-3 pb-3 pt-10 text-xs font-semibold text-white opacity-0 transition duration-300 group-hover:opacity-100">
+                {/* Informasi */}
+                <div className="flex min-h-[190px] flex-col p-4">
+                  <h3 className="text-base font-semibold text-white transition-colors group-hover:text-[#F5A623]">
                     {project.title}
-                  </span>
-                </Link>
-              </div>
-            );
-          })}
+                  </h3>
+
+                  <p className="mt-2 line-clamp-3 text-xs leading-6 text-white/65">
+                    {project.description}
+                  </p>
+
+                  {/* Tags */}
+                  {project.tags && project.tags.length > 0 && (
+                    <div className="mt-3 flex flex-wrap gap-1.5">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full bg-[#F5A623]/10 px-2 py-1 text-[10px] text-[#FFD17A]"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  <div className="mt-auto flex items-center justify-between pt-4">
+                    <span className="text-xs font-medium text-[#F5A623]">
+                      Lihat Proyek ↗
+                    </span>
+                  </div>
+                </div>
+              </ProjectLink>
+            ))}
+          </div>
+
+          {/* Tombol Geser Kanan */}
+          <button
+            onClick={() => scroll("right")}
+            aria-label="Geser ke kanan"
+            className="absolute -right-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-[#123D29]/90 text-white shadow-lg backdrop-blur-md transition hover:scale-110 hover:bg-[#F5A623] hover:text-[#173522] md:-right-5"
+          >
+            <svg
+              className="h-5 w-5 fill-current"
+              viewBox="0 0 24 24"
+            >
+              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+            </svg>
+          </button>
         </div>
-      </div>
+      )}
     </section>
   );
 }

@@ -24,8 +24,9 @@ export const webProjects: Project[] = [
     category: "web",
     title: "Website Taman Kota Surabaya",
     description:
-      "Antarmuka website untuk sistem penghitung kerumunan berbasis microservice di Taman Kota Surabaya — tugas akhir saya. Menampilkan hasil deteksi model YOLOv11 secara real-time lewat integrasi REST API.",
+      "Mengembangkan website yang menampilkan informasi taman kota dan perkiraan jumlah pengunjung dari CCTV. Sistem ini menggunakan YOLOv11 untuk mendeteksi orang, kemudian hasilnya ditampilkan melalui integrasi REST API.",
     image: "/images/projects/webta.png",
+    tags: ["React", "Yolov11", "Rest API"],
     liveUrl: "https://crowd-system-nine.vercel.app",
   },
   {
@@ -33,27 +34,28 @@ export const webProjects: Project[] = [
     category: "web",
     title: "Rebuild Website BLC Surabaya",
     description:
-      "Membangun ulang website Broadband Learning Center Surabaya menggunakan Laravel — merancang halaman utama, dashboard admin internal, serta pengembangan basis data selama magang di Diskominfo Surabaya.",
+      "Membangun ulang website Broadband Learning Center Surabaya selama magang di Diskominfo. Saya mengerjakan halaman utama, dashboard admin, serta pengelolaan database menggunakan Laravel.",
     image: "/images/projects/blc.png",
+    tags: ["laravel", "Postgresql"],
     repoUrl: "https://github.com/sultonnaim/projectBLC",
   },
   {
     slug: "website-simple-manis",
     category: "web",
     title: "Website Simpel Manis",
-    description: "[ISI DESKRIPSI PROJECT DI SINI]",
+    description: "Mengembangkan website Simpel Manis untuk menyajikan informasi dan layanan secara lebih mudah diakses. Proyek ini menjadi pengalaman saya dalam membangun tampilan dan fitur website.",
     image: "/images/projects/simpelmanis.png",
     repoUrl: "https://github.com/sultonnaim/magang",
-    tags: [],
+    tags: ["laravel", "Postgresql"],
   },
   {
     slug: "website-odoo",
     category: "web",
     title: "Website ERP odoo",
-    description: "[ISI DESKRIPSI PROJECT DI SINI]",
+    description: "Mencoba membangun dan mengonfigurasi sistem ERP menggunakan Odoo untuk memahami bagaimana proses bisnis, pengelolaan data, dan berbagai aktivitas operasional dapat terintegrasi dalam satu sistem.",
     image: "/images/projects/odoo.png",
     repoUrl: "https://github.com/sultonnaim/odoo-project",
-    tags: [],
+    tags: ["ERP", "Postgresql", "React"],
   },
 ];
 
@@ -63,34 +65,38 @@ export const designProjects: Project[] = [
     category: "design",
     title: "Konten Visual & Reels",
     description:
-      "Desain feed Instagram dan editing video reels untuk brand lokal, dari konsep sampai render final di Premiere Pro & CapCut.",
+      "Membuat konten visual untuk media sosial, mulai dari desain feed hingga video reels. Saya terlibat dalam proses pengembangan konsep, desain, dan editing menggunakan Photoshop, Premiere Pro, serta CapCut.",
     image: "/images/projects/sosmed.png",
     instagramUrl: "https://www.instagram.com/research.bemunesa",
+    tags: ["Photoshop", "CapCut", "Canva"],
   },
   {
     slug: "poster",
     category: "design",
     title: "Galeri Poster & Vector",
-    description: "Kumpulan poster dan vector illustration hasil karya saya.",
+    description: "Kumpulan karya desain poster dan ilustrasi vector yang saya buat dengan mengeksplorasi komposisi, warna, tipografi, dan berbagai gaya visual.",
     image: "/images/projects/vector.png",
     instagramUrl: "https://www.instagram.com/sssltn29",
+    tags: ["Ilustrator", "Infinite Design"],
   },
   {
     slug: "ui-aplikasi-mobile",
     category: "design",
     title: "Redesign UI Aplikasi Mobile",
     description:
-      "Riset ulang alur pengguna dan desain ulang tampilan aplikasi mobile dari nol pakai Figma, lengkap dengan prototype interaktif.",
+      "Mendesain tampilan aplikasi mobile menggunakan Figma, mulai dari menyusun alur penggunaan hingga membuat prototype interaktif agar pengalaman pengguna terasa lebih nyaman.",
     image: "/images/projects/uiux.png",
     pdfUrl: "/portfolio/ui-aplikasi-mobile.pdf",
+    tags: ["figma"],
   },
   {
     slug: "youtube-konten",
     category: "design",
-    title: "video kontenyt",
-    description: "",
+    title: "video konten youtube",
+    description: "Beberapa hasil editing video untuk konten YouTube, dengan fokus pada penyusunan footage, transisi, audio, dan tampilan visual agar video lebih menarik untuk ditonton.",
     image: "/images/projects/yt.png",
     videoUrl: "https://youtu.be/l0z6pckEpJw",
+    tags: ["Adobe Premier", "Capcut"],
   },
 ];
 
@@ -100,8 +106,9 @@ export const dataProjects: Project[] = [
     category: "data",
     title: "Dashboard Analisis Penjualan",
     description:
-      "Mengolah data penjualan mentah jadi dashboard interaktif di Power BI yang nunjukin tren bulanan, produk terlaris, dan proyeksi sederhana.",
+      "Mengolah data penjualan menjadi dashboard Power BI yang lebih mudah dibaca. Dari data tersebut, saya mencoba melihat tren penjualan, produk terlaris, dan beberapa insight yang bisa membantu memahami performa bisnis.",
     image: "/images/projects/dashboard.png",
+    tags: ["Python", "PostgreSQL", "ETL", "Data Warehouse"],
     repoUrl: "https://github.com/sultonnaim/enterprise-sales-data-warehouse",
   },
   {
@@ -109,8 +116,9 @@ export const dataProjects: Project[] = [
     category: "data",
     title: "Crowd Counting dengan YOLOv11",
     description:
-      "Model deep learning untuk menghitung jumlah orang dalam kerumunan dari citra, dilatih pakai dataset custom yang saya buat dan anotasi sendiri di Roboflow. Ini adalah tugas akhir saya, terbit di Jurnal Smatika Sinta 4.",
+      "Mengembangkan model YOLOv11 untuk mendeteksi dan menghitung jumlah orang dari rekaman CCTV. Dataset dikumpulkan dan dianotasi sendiri, kemudian model diuji untuk melihat performa deteksinya. Proyek ini merupakan tugas akhir saya yang telah dipublikasikan di Jurnal Smatika Sinta 4.",
     image: "/images/projects/yolo.png",
+    tags: ["Python", "YOLO"],
     repoUrl: "https://github.com/sultonnaim/crowd-counting-yolov11",
   },
   {
@@ -118,28 +126,30 @@ export const dataProjects: Project[] = [
     category: "data",
     title: "Pengolahan hasil jual(by karirnex)",
     description:
-      "Mengolah data penjualan mentah jadi dashboard interaktif di Power BI yang nunjukin tren bulanan, produk terlaris, dan proyeksi sederhana.",
+      "Mengolah data hasil penjualan menggunakan Microsoft Excel dan Power BI, kemudian menyajikannya dalam dashboard untuk melihat perkembangan penjualan dan performa produk.",
     image: "/images/projects/karirnex1.png",
     repoUrl: "https://github.com/sultonnaim/dashboard-penjualan",
+    tags: ["Python", "Excel", " Google Bigquery", "Power BI"],
   },
   {
     slug: "dashboardpenjualanrevou",
     category: "data",
     title: "Dashboard Analisis Penjualan (byrevou)",
     description:
-      "Mengolah data penjualan mentah jadi dashboard interaktif di Power BI yang nunjukin tren bulanan, produk terlaris, dan proyeksi sederhana.",
+      "Membuat dashboard analisis penjualan sebagai bagian dari pembelajaran di RevoU. Saya mengeksplorasi data untuk melihat pola penjualan dan menyajikan hasilnya dalam bentuk visualisasi yang lebih mudah dipahami.",
     image: "/images/projects/revou.png",
     repoUrl: "https://github.com/sultonnaim/dashboard-penjualan",
+    tags: ["Excel", "power BI"],
   },
   {
-    // slug dibedakan: sebelumnya sama persis dengan project pertama di atas
     slug: "dashboard-bootcamp-karirnex",
     category: "data",
     title: "Dashboard Analisis (bootcamp microsoft by karirnex)",
     description:
-      "Mengolah data penjualan mentah jadi dashboard interaktif di Power BI yang nunjukin tren bulanan, produk terlaris, dan proyeksi sederhana.",
+      "Mengerjakan dashboard menggunakan tools Microsoft untuk menyajikan data dalam bentuk visual. Proyek ini membantu saya memahami proses pengolahan data dan penyampaian informasi melalui dashboard.",
     image: "/images/projects/karirnex2.png",
     repoUrl: "https://github.com/sultonnaim/dashboard-penjualan",
+    tags: ["Microsoft Office"],
   },
 ];
 
